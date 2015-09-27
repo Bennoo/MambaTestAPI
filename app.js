@@ -17,10 +17,10 @@
 
 
 var JawBoneAppliSettings = {
-	 	name: 'FirstMambaTestingApp',
+	 	name: 'MambaTestAPI',
 	 	vendor: 'Mamba',
-	 	client_Id: 'VLR_bCUuPzI',
-	 	app_Secret: '77dcb086a496baa4310df59b4e0aa56b75d4677d'
+	 	client_Id: 'VLR_',
+	 	app_Secret: '77dcb086a496b'
 	 };	
 
 
