@@ -9,7 +9,17 @@
 		</br>
 		Nom de l'appli Jawbone : {{JBCtrl.settings.name}}
 		</br>			
-		<button ng-click="JBCtrl.callApi(1)">Make Call to authenticate</button>
+		<button ng-click="JBCtrl.getCode()">Get CODE</button>
+		</br>
+		<input name="authCode" ng-model="JBCtrl.AuthCode">		
+		</br>			
+		<button ng-click="JBCtrl.exchangeWithToken()">Get Token</button>
+		</br>
+		<input name="authToken" ng-model="JBCtrl.AuthToken">
+		<button ng-click="JBCtrl.GetHeartRates()">Get heartRates</button>
+
+
+
 		
 		
 		<script type="text/javascript" src="angular.min.js"></script>
