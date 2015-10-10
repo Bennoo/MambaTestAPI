@@ -28,6 +28,7 @@ namespace MambaTestApi
             // services.AddWebApiConventions();
 
             services.AddSingleton<ITodoItemsRepository, ToDoItemRepository>();
+            services.AddSingleton<IJawboneRepository, JawBoneActivityItemRepository>();
 
         }
 

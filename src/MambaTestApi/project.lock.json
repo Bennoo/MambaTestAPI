@@ -1055,6 +1055,11 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.dll": {}
         }
       },
+      "System.Net.Http/4.0.0-beta-23019": {
+        "frameworkAssemblies": [
+          "System.Net.Http"
+        ]
+      },
       "System.Reflection.Metadata/1.0.21": {
         "dependencies": {
           "System.Collections.Immutable": "1.1.36"
@@ -2376,6 +2381,25 @@
           "lib/DNXCore50/System.IO.dll": {}
         }
       },
+      "System.IO.Compression/4.0.0-beta-23019": {
+        "dependencies": {
+          "System.Runtime": "4.0.0-beta-23019",
+          "System.IO": "4.0.0-beta-23019",
+          "System.Text.Encoding": "4.0.0-beta-23019",
+          "System.Resources.ResourceManager": "4.0.0-beta-23019",
+          "System.Threading.Tasks": "4.0.0-beta-23019",
+          "System.Runtime.InteropServices": "4.0.0-beta-23019",
+          "System.Collections": "4.0.0-beta-23019",
+          "System.Runtime.Extensions": "4.0.0-beta-23019",
+          "System.Threading": "4.0.0-beta-23019"
+        },
+        "compile": {
+          "ref/dotnet/System.IO.Compression.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.IO.Compression.dll": {}
+        }
+      },
       "System.IO.FileSystem/4.0.0-beta-23019": {
         "dependencies": {
           "System.Runtime": "4.0.20-beta-23019",
@@ -2466,6 +2490,32 @@
         },
         "runtime": {
           "lib/DNXCore50/System.Linq.Expressions.dll": {}
+        }
+      },
+      "System.Net.Http/4.0.0-beta-23019": {
+        "dependencies": {
+          "System.Runtime": "4.0.20-beta-23019",
+          "System.Runtime.InteropServices": "4.0.20-beta-23019",
+          "System.Resources.ResourceManager": "4.0.0-beta-23019",
+          "System.Runtime.Handles": "4.0.0-beta-23019",
+          "System.Security.Cryptography.X509Certificates": "4.0.0-beta-23019",
+          "Microsoft.Win32.Primitives": "4.0.0-beta-23019",
+          "System.Threading.Tasks": "4.0.0-beta-23019",
+          "System.Diagnostics.Debug": "4.0.0-beta-23019",
+          "System.Collections": "4.0.0-beta-23019",
+          "System.Runtime.Extensions": "4.0.0-beta-23019",
+          "System.Globalization": "4.0.0-beta-23019",
+          "System.Threading": "4.0.0-beta-23019",
+          "System.IO.Compression": "4.0.0-beta-23019",
+          "System.Net.Primitives": "4.0.10-beta-23019",
+          "System.IO": "4.0.10-beta-23019",
+          "System.Text.Encoding": "4.0.10-beta-23019"
+        },
+        "compile": {
+          "ref/dotnet/System.Net.Http.dll": {}
+        },
+        "runtime": {
+          "lib/DNXCore50/System.Net.Http.dll": {}
         }
       },
       "System.Net.NetworkInformation/4.0.10-beta-23019": {
@@ -4272,6 +4322,23 @@
         "runtimes/win8-aot/lib/netcore50/System.IO.dll"
       ]
     },
+    "System.IO.Compression/4.0.0-beta-23019": {
+      "sha512": "sc9LskbuP6P8pt5nLmNBKnn8sErHfAbzd19sAKy1Qz4rHx+q0nkn5nE/cAvdMstZj9st8H17KVvPFbNF49Z3Gw==",
+      "files": [
+        "runtime.json",
+        "System.IO.Compression.4.0.0-beta-23019.nupkg",
+        "System.IO.Compression.4.0.0-beta-23019.nupkg.sha512",
+        "System.IO.Compression.nuspec",
+        "lib/dotnet/System.IO.Compression.dll",
+        "lib/net45/_._",
+        "lib/netcore50/System.IO.Compression.dll",
+        "lib/win8/_._",
+        "ref/dotnet/System.IO.Compression.dll",
+        "ref/net45/_._",
+        "ref/netcore50/System.IO.Compression.dll",
+        "ref/win8/_._"
+      ]
+    },
     "System.IO.FileSystem/4.0.0-beta-23019": {
       "sha512": "5IcxmjfWAJd+/ApnqVxG9DGSGAkw8qeZinbJ6jmbQK+hIUp7sDxhlwgN4AmQHh7q4pKATM1uSFXpm4rlbFsqUA==",
       "files": [
@@ -4338,6 +4405,22 @@
         "ref/dotnet/System.Linq.Expressions.dll",
         "ref/net46/_._",
         "runtimes/win8-aot/lib/netcore50/System.Linq.Expressions.dll"
+      ]
+    },
+    "System.Net.Http/4.0.0-beta-23019": {
+      "sha512": "Z0FOEd5NsFPmU8pfWWdaNu2efWEfBjtjml7TG/kptpGeD7XhvhkVPlhItCX1c8Jnl74qJxdSnxKN03qtmu1KJg==",
+      "files": [
+        "System.Net.Http.4.0.0-beta-23019.nupkg",
+        "System.Net.Http.4.0.0-beta-23019.nupkg.sha512",
+        "System.Net.Http.nuspec",
+        "lib/DNXCore50/System.Net.Http.dll",
+        "lib/net45/_._",
+        "lib/netcore50/System.Net.Http.dll",
+        "lib/win8/_._",
+        "ref/dotnet/System.Net.Http.dll",
+        "ref/net45/_._",
+        "ref/netcore50/System.Net.Http.dll",
+        "ref/win8/_._"
       ]
     },
     "System.Net.NetworkInformation/4.0.10-beta-23019": {
@@ -4932,7 +5015,8 @@
       "Microsoft.AspNet.Mvc >= 6.0.0-beta5",
       "Microsoft.AspNet.Server.IIS >= 1.0.0-beta5",
       "Microsoft.AspNet.Server.WebListener >= 1.0.0-beta5",
-      "Microsoft.AspNet.StaticFiles >= 1.0.0-beta5"
+      "Microsoft.AspNet.StaticFiles >= 1.0.0-beta5",
+      "System.Net.Http >= 4.0.0-beta-23019"
     ],
     "DNX,Version=v4.5.1": [],
     "DNXCore,Version=v5.0": []
