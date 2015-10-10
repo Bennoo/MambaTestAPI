@@ -15,13 +15,13 @@ namespace MambaTestApi.Repo
             var resp = new ActivityItems();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://jawbone.com/nudge/api/");
+                client.BaseAddress = new Uri(BaseUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Add("Authorization", Authorization);
            
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = client.GetAsync("v.1.1/users/@me/moves").Result;
+                HttpResponseMessage response = client.GetAsync("moves").Result;
                 if (response.IsSuccessStatusCode)
                 {
                     resp = new ActivityItems { content = response.Content.ReadAsStringAsync().Result };
@@ -36,13 +36,13 @@ namespace MambaTestApi.Repo
             var resp = new HeartRateItems();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://jawbone.com/nudge/api/");
+                client.BaseAddress = new Uri(BaseUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Add("Authorization", Authorization);
 
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = client.GetAsync("v.1.1/users/@me/heartrates").Result;
+                HttpResponseMessage response = client.GetAsync("heartrates").Result;
                 if (response.IsSuccessStatusCode)
                 {
                     resp = new HeartRateItems { content = response.Content.ReadAsStringAsync().Result };
