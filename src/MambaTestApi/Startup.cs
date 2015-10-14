@@ -27,7 +27,6 @@ namespace MambaTestApi
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
             // services.AddWebApiConventions();
 
-            services.AddSingleton<ITodoItemsRepository, ToDoItemRepository>();
             services.AddSingleton<IJawboneRepository, JawBoneActivityItemRepository>();
 
         }

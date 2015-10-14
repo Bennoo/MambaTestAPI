@@ -11,8 +11,13 @@
 <body >
     <div ng-controller="jawBoneController">
 
-        test!!
-        {{jawdata}}
+        <p>Activity:</p>
+        <button ng-click="fetchActivity()">Fetch Activity</button>
+        <div>{{activityJawData}}</div>
+
+        <p>HeartRate:</p>
+        <button ng-click="fetchHeartRate()">Fetch HeartRate</button>
+        <div>{{heartRateJawData}}</div>
 
     </div>
 </body>

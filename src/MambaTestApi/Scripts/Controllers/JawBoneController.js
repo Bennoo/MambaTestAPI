@@ -8,6 +8,15 @@
     jawBoneController.$inject = ['$scope', 'JawBone'];
 
     function jawBoneController($scope, JawBone) {
-        $scope.jawdata = JawBone.query();
+        $scope.activityJawData = 'Empty';
+        $scope.heartRateJawData = 'Empty';
+
+        $scope.fetchActivity = function () {            
+            $scope.activityJawData = JawBone.activity.get();
+        };
+        
+        $scope.fetchHeartRate = function () {
+            $scope.heartRateJawData = JawBone.heartRate.get();
+        }        
     }
 })();

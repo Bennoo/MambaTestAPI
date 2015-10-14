@@ -5,9 +5,14 @@
 
     JawBoneServices.factory('JawBone', ['$resource',
       function ($resource) {
-          return $resource('/api/jawbone/getactivity', {}, {
-              query: { method: 'GET', params: {}, isArray: false }
-          });
+          return {
+              activity: $resource('/api/jawbone/getactivity', {}, {
+                  get: { method: 'GET', params: {}, isArray: false }
+              }),
+              heartRate: $resource('/api/jawbone/getheartrate', {}, {
+                  get: { method: 'GET', params: {}, isArray: false }
+              })
+          };
       }]);
 
 
