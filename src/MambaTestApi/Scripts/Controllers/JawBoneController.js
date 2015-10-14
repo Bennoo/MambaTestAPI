@@ -3,11 +3,11 @@
 
     angular
         .module('MambaTestApp')
-        .controller('JawBoneController', JawBoneController);
+        .controller('jawBoneController', jawBoneController);
 
-    JawBoneController.$inject = ['$scope', 'JawBoneAPI']; 
+    jawBoneController.$inject = ['$scope', 'JawBone'];
 
-    function JawBoneController($scope, JawBoneAPI) {
-        $scope.JawBoneData = JawBoneAPI.query();
+    function jawBoneController($scope, JawBone) {
+        $scope.jawdata = JawBone.query();
     }
 })();

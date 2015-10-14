@@ -3,7 +3,7 @@
 
     angular.module('MambaTestApp', [
         // Angular modules 
-        'JawBoneAPIServices'
+        'JawBoneServices'
 
         // Custom modules 
 
