@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using MambaTestApi.Models;
 using System.Net.Http.Headers;
+using Newtonsoft.Json;
 
 namespace MambaTestApi.Repo
 {
@@ -25,6 +26,8 @@ namespace MambaTestApi.Repo
                 if (response.IsSuccessStatusCode)
                 {
                     resp = new ActivityItems { content = response.Content.ReadAsStringAsync().Result };
+
+                    dynamic jd = JsonConvert.DeserializeObject(resp.content);
                 }
             }
 
@@ -46,6 +49,8 @@ namespace MambaTestApi.Repo
                 if (response.IsSuccessStatusCode)
                 {
                     resp = new HeartRateItems { content = response.Content.ReadAsStringAsync().Result };
+
+                    dynamic test = JsonConvert.DeserializeObject(resp.content);
                 }
             }
 

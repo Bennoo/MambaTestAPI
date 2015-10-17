@@ -8,5 +8,6 @@ namespace MambaTestApi.Models
     public class ActivityItems
     {
         public string content;
+         
     }
 }
