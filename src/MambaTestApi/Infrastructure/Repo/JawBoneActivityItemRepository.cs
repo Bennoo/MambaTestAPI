@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MambaTestApi.Models;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MambaTestApi.Repo
 {
@@ -26,8 +27,6 @@ namespace MambaTestApi.Repo
                 if (response.IsSuccessStatusCode)
                 {
                     resp = new ActivityItems { content = response.Content.ReadAsStringAsync().Result };
-
-                    dynamic jd = JsonConvert.DeserializeObject(resp.content);
                 }
             }
 
@@ -50,11 +49,33 @@ namespace MambaTestApi.Repo
                 {
                     resp = new HeartRateItems { content = response.Content.ReadAsStringAsync().Result };
 
-                    dynamic test = JsonConvert.DeserializeObject(resp.content);
+                    //var jsonSerializerSettings = new JsonSerializerSettings();
+                    //jsonSerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
+                    var jObject = JObject.Parse(resp.content);
+
+                    ParseMetaPart(resp, jObject);
+                    ParseHRItems(resp, jObject);
                 }
             }
 
             return resp;
+        }
+
+        private static void ParseHRItems(HeartRateItems resp, JObject jObject)
+        {
+            var test = (JArray)jObject["data"]["items"];
+
+            foreach (var item in test)
+            {
+                var temp = JsonConvert.DeserializeObject<HRItem>(item.ToString());//, jsonSerializerSettings);
+                resp.items.Add(temp);
+            }
+        }
+
+        private static void ParseMetaPart(HeartRateItems resp, JObject jObject)
+        {            
+            var jToken = jObject.GetValue("meta");
+            resp.meta = JsonConvert.DeserializeObject<HeartRateMeta>(jToken.ToString());//, jsonSerializerSettings);
         }
     }
 }
