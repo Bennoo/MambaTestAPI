@@ -8,7 +8,7 @@ namespace MambaTestApi.Repo.Interfaces
 {
     public interface IJawboneRepository
     {
-        ActivityItems GetActivity();
+        GlobalActivityItem GetActivity();
         HeartRateItems GetHeartRates();
     }
 }

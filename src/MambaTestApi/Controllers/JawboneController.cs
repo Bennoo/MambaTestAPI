@@ -20,9 +20,9 @@ namespace MambaTestApi.Controllers
         }
         // GET: api/values
         [HttpGet]
-        public string GetActivity()
+        public GlobalActivityItem GetActivity()
         {
-            return _repo.GetActivity().content;
+            return _repo.GetActivity();
         }        
         [HttpGet]
         public HeartRateItems GetHeartRate()

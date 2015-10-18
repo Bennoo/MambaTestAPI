@@ -6,9 +6,9 @@ namespace MambaTestApi.Models
 {
     public class HeartRateItems
     {
-        public string content;
-        public HeartRateMeta meta;
-        public List<HRItem> items = new List<HRItem>();
+        public string Content { get; set; }
+        public HeartRateMeta Meta { get; set; }
+        public List<HRItem> Items { get; set; } = new List<HRItem>();
     }
 
     public class HeartRateMeta

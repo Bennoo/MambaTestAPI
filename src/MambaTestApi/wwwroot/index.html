@@ -13,20 +13,32 @@
 <body >
     <div ng-controller="jawBoneController">
 
-        <p>Activity:</p>
-        <button ng-click="fetchActivity()">Fetch Activity</button>
-        <div>{{activityJawData}}</div>
+        <h1 class="text-info">Activity</h1>
+        <button class="btn" ng-click="fetchActivity()">Fetch Activity</button>
+        <br />
+        <table class="table-bordered table-striped">
+            <tr>
+                <td>Date</td>
+                <td>details</td>
+            </tr>
 
-        <p>HeartRate:</p>
-        <button ng-click="fetchHeartRate()">Fetch HeartRate</button>
-        
-        <table class="table">
+            <tr ng-repeat="ActivityItem in activityJawData.Items track by ActivityItem.date">
+                <td>{{ActivityItem.date}}</td>
+                <td>ActivityItem.details</td>
+            </tr>
+
+        </table>
+
+        <h1 class="text-info">HeartRate</h1>
+        <button class="btn" ng-click="fetchHeartRate()">Fetch HeartRate</button>
+        <br />
+        <table class="table-bordered table-striped">
             <tr>
                 <td>Date</td>
                 <td>Resting HeartRate</td>
             </tr>
             
-            <tr ng-repeat="HRitem in heartRateJawData.items track by HRitem.date">
+            <tr ng-repeat="HRitem in heartRateJawData.Items track by HRitem.date">
                 <td>{{HRitem.date}}</td>
                 <td>{{HRitem.resting_heartrate}}</td>
             </tr>
