@@ -10,54 +10,77 @@
     <link href="lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />  
     <script src="app.js"></script>
 </head>
-<body >
-    <div ng-controller="jawBoneController">
+<body>
+    <div class="container-fluid" ng-controller="jawBoneController">
+        <div class="page-header">
+            <h1>Mamba <small>Activity tracker API consumer</small></h1>
+        </div>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">JawBone</a></li>
+            <li role="presentation"><a href="#">FitBit</a></li>
+            <li role="presentation"><a href="#">Jalee</a></li>
+        </ul>
+        <div class="row">
+            <div class="well well-sm">
+                <h1 class="text-info">Activity</h1>
+                <button class="btn btn-default" ng-click="fetchActivity()">
+                    <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                    Fetch Activity
+                </button>
+            </div>
+            <div class="col-lg-6">
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Date</th>
+                        <th>details</th>
+                    </tr>
 
-        <h1 class="text-info">Activity</h1>
-        <button class="btn" ng-click="fetchActivity()">Fetch Activity</button>
-        <br />
-        <table class="table table-bordered table-striped">
-            <tr>
-                <th>Date</th>
-                <th>details</th>
-            </tr>
+                    <tr ng-repeat="ActivityItem in activityJawData.Items track by ActivityItem.date">
+                        <td>{{ActivityItem.date}}</td>
+                        <td>
+                            <table class="table table-condensed">
+                                <tr>
+                                    <th>Hour</th>
+                                    <th>Steps</th>
+                                    <th>distance</th>
+                                    <th>active_time</th>
+                                </tr>
+                                <tr ng-repeat="HourDetail in ActivityItem.details | orderBy:'hour'">
+                                    <td>{{HourDetail.hour}}</td>
+                                    <td>{{HourDetail.steps}}</td>
+                                    <td>{{HourDetail.distance}}</td>
+                                    <td>{{HourDetail.active_time}}</td>
+                                </tr>
+                            </table>
+                        </td>
 
-            <tr ng-repeat="ActivityItem in activityJawData.Items track by ActivityItem.date">
-                <td>{{ActivityItem.date}}</td>                                
-                 <td>
-                     <table class="table table-condensed">
-                         <tr>
-                             <th>Hour</th>
-                             <th>Steps</th>
-                         </tr>
-                         <tr ng-repeat="HourDetail in ActivityItem.details | orderBy:'hour'">
-                             <td>{{HourDetail.hour}}</td>
-                             <td>{{HourDetail.steps}}</td>
-                         </tr>
-                     </table>
-                 </td>
-                
-            </tr>
+                    </tr>
 
-        </table>
+                </table>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="well well-sm">
+                <h1 class="text-info">HeartRate</h1>
+                <button class="btn btn-default" ng-click="fetchHeartRate()">
+                    <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                    Fetch HeartRate
+                </button>
+            </div>
+            <div class="col-lg-6">
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Date</th>
+                        <th>Resting HeartRate</th>
+                    </tr>
 
-        <h1 class="text-info">HeartRate</h1>
-        <button class="btn" ng-click="fetchHeartRate()">Fetch HeartRate</button>
-        <br />
-        <table class="table table-bordered table-striped">
-            <tr>
-                <th>Date</th>
-                <th>Resting HeartRate</th>
-            </tr>
-            
-            <tr ng-repeat="HRitem in heartRateJawData.Items | orderBy:'date'">
-                <td>{{HRitem.date}}</td>
-                <td>{{HRitem.resting_heartrate}}</td>
-            </tr>
-
-        </table>
-
-
+                    <tr ng-repeat="HRitem in heartRateJawData.Items | orderBy:'date'">
+                        <td>{{HRitem.date}}</td>
+                        <td>{{HRitem.resting_heartrate}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
 </body>
 </html>
