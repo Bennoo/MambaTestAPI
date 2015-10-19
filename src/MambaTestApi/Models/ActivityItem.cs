@@ -13,6 +13,9 @@ namespace MambaTestApi.Models
         public List<ActivityItem> Items { get; set; } = new List<ActivityItem>();
     }
 
+    /// <summary>
+    /// Meta info about the activity items
+    /// </summary>
     public class ActivityMeta
     {
         public string user_xid { get; set; }
@@ -21,16 +24,20 @@ namespace MambaTestApi.Models
         public int time { get; set; }
     }
 
+    /// <summary>
+    /// For each days an activity Item
+    /// </summary>
     public class ActivityItem
-    {
-        [JsonIgnore]
+    {        
         public List<HourActivityDetail> details { get; set; } = new List<HourActivityDetail>();
         public int date { get; set; }
     }
 
+    /// <summary>
+    /// Details for a specific hour in the day
+    /// </summary>
     public class HourActivityDetail
     {
-        [JsonIgnore]
         public int hour { get; set; }
         public double distance { get; set; }
         public int active_time { get; set; }

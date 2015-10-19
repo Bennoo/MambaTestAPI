@@ -10,8 +10,15 @@ using Newtonsoft.Json.Linq;
 
 namespace MambaTestApi.Repo
 {
+    /// <summary>
+    /// Repository getting informations directly from the JawBone API
+    /// </summary>
     public class JawBoneActivityItemRepository : JawBoneRepo, Interfaces.IJawboneRepository
     {
+        /// <summary>
+        /// Get the last activity items
+        /// </summary>
+        /// <returns></returns>
         public GlobalActivityItem GetActivity()
         {
             var resp = new GlobalActivityItem();
@@ -38,8 +45,10 @@ namespace MambaTestApi.Repo
             return resp;
         }
 
-       
-
+       /// <summary>
+       /// Get he last heart rate data
+       /// </summary>
+       /// <returns></returns>
         public HeartRateItems GetHeartRates()
         {
             var resp = new HeartRateItems();
@@ -55,9 +64,7 @@ namespace MambaTestApi.Repo
                 if (response.IsSuccessStatusCode)
                 {
                     resp = new HeartRateItems { Content = response.Content.ReadAsStringAsync().Result };
-
-                    //var jsonSerializerSettings = new JsonSerializerSettings();
-                    //jsonSerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
+                                        
                     var jObject = JObject.Parse(resp.Content);
 
                     ParseMetaPart(resp, jObject);
@@ -84,7 +91,8 @@ namespace MambaTestApi.Repo
 
             foreach (var item in activeItems)
             {
-                var tempItem = JsonConvert.DeserializeObject<ActivityItem>(item.ToString());
+                var tempItem = new ActivityItem();
+                tempItem.date = item["date"].ToObject<int>();
                 JToken hourDetails = item["details"]["hourly_totals"];
                 foreach (JProperty hour in hourDetails)
                 {                                           
@@ -99,7 +107,7 @@ namespace MambaTestApi.Repo
         private static void ParseMetaPart(HeartRateItems resp, JObject jObject)
         {            
             var jToken = jObject.GetValue("meta");
-            resp.Meta = JsonConvert.DeserializeObject<HeartRateMeta>(jToken.ToString());//, jsonSerializerSettings);
+            resp.Meta = JsonConvert.DeserializeObject<HeartRateMeta>(jToken.ToString());
         }
 
         private void ParseMetaPart(GlobalActivityItem resp, JObject jObject)
