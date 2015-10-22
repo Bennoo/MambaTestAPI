@@ -5,18 +5,18 @@
         .module('MambaTestApp')
         .controller('jawBoneController', jawBoneController);
 
-    jawBoneController.$inject = ['$scope', 'JawBone'];
+    jawBoneController.$inject = ['$scope', 'JawBoneService'];
 
-    function jawBoneController($scope, JawBone) {
+    function jawBoneController($scope, JawBoneService) {
         $scope.activityJawData = 'Empty';
         $scope.heartRateJawData = 'Empty';
 
         $scope.fetchActivity = function () {            
-            $scope.activityJawData = JawBone.activity.get();
+            $scope.activityJawData = JawBoneService.activity.get();
         };
         
         $scope.fetchHeartRate = function () {
-            $scope.heartRateJawData = JawBone.heartRate.get();
+            $scope.heartRateJawData = JawBoneService.heartRate.get();
         }        
     }
 })();

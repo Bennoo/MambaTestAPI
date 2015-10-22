@@ -3,7 +3,7 @@
 
     var JawBoneServices = angular.module('JawBoneServices', ['ngResource']);
 
-    JawBoneServices.factory('JawBone', ['$resource',
+    JawBoneServices.factory('JawBoneService', ['$resource',
       function ($resource) {
           return {
               activity: $resource('/api/jawbone/getactivity', {}, {
